@@ -1,10 +1,13 @@
 module.exports = {
+  darkMode: "class",
   content: [
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   daisyui: {
-    themes: ["winter"],
+    themes: ["winter", "night"],
+    darkTheme: "night"
   },
-  plugins: [require("daisyui")],
+  plugins: [require("@tailwindcss/typography"),require("daisyui")],
+  
 }

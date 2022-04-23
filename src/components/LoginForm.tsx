@@ -1,20 +1,32 @@
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 const LoginForm = () => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
+	const [emailError, setEmailError] = useState('')
+	const navigate = useNavigate()
 
-	const login = async () => {
-		await new Promise(resolve => setTimeout(resolve, 3000))
-
+	const login = async (e: { preventDefault: () => void }) => {
+		e.preventDefault()
+		if (!validate()) return
+		navigate('/Home')
 		try {
 			console.log('login')
 			console.log(email, password)
 		} catch (error) {}
 	}
 
+	const validate = (): boolean => {
+		if (email === '' || password === '') {
+			setEmailError('Email and password are required')
+
+			return false
+		}
+		return true
+	}
+
 	return (
-		<form action='' className='space-y-8'>
+		<form onSubmit={login} className='space-y-8'>
 			<div className='space-y-4'>
 				<div className='text-center'>
 					<img src='/images/logo.png' alt='logo' className='h-12 w-auto' />
@@ -29,7 +41,7 @@ const LoginForm = () => {
 								<input
 									onChange={e => setEmail(e.target.value)}
 									type='email'
-									className='peer  input-primary pt-8  rounded-md  focus:shadow-sm w-full p-3 h-16 placeholder-transparent transition-all duration-100'
+									className='peer input  input-primary pt-8 rounded-md focus:shadow-sm w-full p-3 h-16 placeholder-transparent bg-opacity-70 transition-all duration-100'
 									placeholder='name@example.com'
 									autoComplete='off'
 								/>
@@ -46,7 +58,7 @@ const LoginForm = () => {
 								<input
 									onChange={e => setPassword(e.target.value)}
 									type='password'
-									className='peer  input-primary pt-8  rounded-md  focus:shadow-sm w-full p-3 h-16 placeholder-transparent transition-all duration-100'
+									className='peer input input-primary pt-8  rounded-md  focus:shadow-sm w-full p-3 h-16 placeholder-transparent bg-opacity-70 transition-all duration-100'
 									placeholder='**********'
 									autoComplete='off'
 								/>
@@ -57,29 +69,31 @@ const LoginForm = () => {
 									Password
 								</label>
 							</div>
+							<span className='text-rose-400 text-sm opacity-90'>
+								{emailError}
+							</span>
 						</div>
 					</div>
 					<div className='space-y-8'>
 						<button
-							onClick={login}
-							type='button'
+							type='submit'
 							className='btn btn-outline btn-secondary w-full'
 						>
 							Login
 						</button>
 					</div>
 					<div className='text-center'>
-						<a href='#' className='text-sm text-primary'>
+						<a href='#' className='text-sm text-accent-focus'>
 							Forgot password?
 						</a>
 
 						<div className='space-y-2'>
-							<span className='text-sm text-gray-600'>
+							<span className='text-sm text-accent-focus'>
 								Don&apos;t have an account?
 							</span>
 							<NavLink
 								to='/Signup'
-								className='text-sm underline decoration-transparent hover:decoration-sky-500 ml-2 hover:text-sky-800 transition-all duration-150'
+								className='text-sm underline decoration-transparent hover:decoration-sky-500 ml-2 hover:text-secondary transition-all duration-150'
 							>
 								Sign up
 							</NavLink>
