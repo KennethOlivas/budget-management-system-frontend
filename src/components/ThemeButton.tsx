@@ -1,25 +1,30 @@
 import { MoonIcon, SunIcon } from '@heroicons/react/solid'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface ThemeProps {
 	style: string
 }
 
 const ThemeButton = ({ style }: ThemeProps) => {
-	const [theme, setTheme] = useState(
-		document.documentElement.getAttribute('data-theme')
-	)
-	const handleClick = () => {
-		setTheme(document.documentElement.getAttribute('data-theme'))
-		if (theme === 'night') {
+	const [darkMode, setDarkMode] = useState<boolean | undefined>(undefined)
+	useEffect(() => {
+		if (darkMode) {
 			document.documentElement.setAttribute('data-theme', 'winter')
+			localStorage.setItem('vidyaDarkMode', 'true')
 		} else {
 			document.documentElement.setAttribute('data-theme', 'night')
+			localStorage.setItem('vidyaDarkMode', 'false')
 		}
+	}, [darkMode])
+
+	const toggleDarkMode = () => {
+		setDarkMode(!darkMode)
 	}
 
-	return (
-		{theme === 'night' ? <MoonIcon className=`${style}` onClick={handleClick} /> : <SunIcon className=`${style}` onClick={handleClick} />}
+	return darkMode ? (
+		<SunIcon onClick={toggleDarkMode} className={style} />
+	) : (
+		<MoonIcon onClick={toggleDarkMode} className={style} />
 	)
 }
 
