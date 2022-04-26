@@ -1,5 +1,6 @@
 import { Fragment } from 'react'
 import NavbarItems from './NavbarItems'
+import ThemeButton from './ThemeButton'
 
 const NavBar = () => {
 	return (
@@ -7,10 +8,13 @@ const NavBar = () => {
 			<div className='flex-1 px-2 mx-2 space-x-4'>
 				<NavbarItems title={'link'} path={'/'} />
 			</div>
-			<div className='flex-none hidden lg:block'>
+			<div className='flex-none hidden lg:block justify-center space-x-6'>
+				<ul className='menu menu-horizontal'>
+					<ThemeButton style='btn btn-circle btn-ghost px-2 py-2 ' />
+				</ul>
 				<div className='dropdown dropdown-end'>
 					<label tabIndex={0} className='btn btn-ghost btn-circle avatar'>
-						<div className='w-10 rounded-full'>
+						<div className=' rounded-full'>
 							<img src='https://api.lorem.space/image/face?hash=33791' />
 						</div>
 					</label>
@@ -32,7 +36,6 @@ const NavBar = () => {
 						</li>
 					</ul>
 				</div>
-				<ul className='menu menu-horizontal'></ul>
 			</div>
 		</Fragment>
 	)
