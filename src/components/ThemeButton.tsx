@@ -2,10 +2,11 @@ import { MoonIcon, SunIcon } from '@heroicons/react/solid'
 import { useEffect, useState } from 'react'
 
 interface ThemeProps {
-	style: string
+	StyleLabel: string
+	styleIcon: string
 }
 
-const ThemeButton = ({ style }: ThemeProps) => {
+const ThemeButton = ({ styleIcon, StyleLabel }: ThemeProps) => {
 	const [darkMode, setDarkMode] = useState<boolean | undefined>(undefined)
 	useEffect(() => {
 		if (darkMode) {
@@ -21,10 +22,12 @@ const ThemeButton = ({ style }: ThemeProps) => {
 		setDarkMode(!darkMode)
 	}
 
-	return darkMode ? (
-		<SunIcon onClick={toggleDarkMode} className={style} />
-	) : (
-		<MoonIcon onClick={toggleDarkMode} className={style} />
+	return (
+		<label className={'swap swap-rotate' + StyleLabel}>
+			<input onClick={toggleDarkMode} type='checkbox' />
+			<SunIcon className={'swap-off fill-current' + styleIcon} />
+			<MoonIcon className={'swap-on fill-current' + styleIcon} />
+		</label>
 	)
 }
 

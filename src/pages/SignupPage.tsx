@@ -1,10 +1,5 @@
-import Register from "../components/Register"
+import Register from '../components/Register'
 
-
-const SingUp = () => {
-	return (
-		<Register/>
-	)
-}
+const SingUp = () => <Register />
 
 export default SingUp

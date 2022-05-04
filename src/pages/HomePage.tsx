@@ -1,10 +1,5 @@
-import { Fragment } from 'react'
-import Menu from '../components/Menu'
+import Dashboard from '../components/Dashboard'
 
-const HomePage = () => (
-	<Fragment>
-        <Menu/>
-	</Fragment>
-)
+const HomePage = () => <Dashboard />
 
 export default HomePage

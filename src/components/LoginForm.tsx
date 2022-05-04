@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
+
 const LoginForm = () => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
@@ -19,7 +20,6 @@ const LoginForm = () => {
 	const validate = (): boolean => {
 		if (email === '' || password === '') {
 			setEmailError('Email and password are required')
-
 			return false
 		}
 		return true
@@ -83,10 +83,9 @@ const LoginForm = () => {
 						</button>
 					</div>
 					<div className='text-center'>
-						<a href='#' className='text-sm text-accent-focus'>
+						<span className='text-sm text-accent-focus cursor-pointer'>
 							Forgot password?
-						</a>
-
+						</span>
 						<div className='space-y-2'>
 							<span className='text-sm text-accent-focus'>
 								Don&apos;t have an account?
