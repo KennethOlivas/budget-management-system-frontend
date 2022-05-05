@@ -1,8 +1,6 @@
 import SetUpAcount from "./SetUpAcount"
 
 const HeroDashboard = () => {
-	
-	
 	return (
 		<div className='hero bg-base-200 '>
 			<div className='hero-content text-center'>
@@ -12,7 +10,6 @@ const HeroDashboard = () => {
 						First time here? Setup Bank account to get started.
 					</p>
 					<SetUpAcount />
-					
 				</div>
 			</div>
 		</div>

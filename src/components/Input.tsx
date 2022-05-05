@@ -1,16 +1,21 @@
 import React from 'react'
-
 interface InputProps {
 	placeholderLabel: string
 	type?: string
 	value: string
-    divMargin?: boolean
+	divMargin?: boolean
 	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-const Input = ({ placeholderLabel, divMargin, type, value, onChange }: InputProps) => {
+const Input = ({
+	placeholderLabel,
+	divMargin,
+	type,
+	value,
+	onChange,
+}: InputProps) => {
 	return (
-		<div className={`${divMargin ? 'my-5': ''} relative`}>
+		<div className={`${divMargin ? 'my-5' : ''} relative`}>
 			<input
 				placeholder={placeholderLabel}
 				className='peer input input-primary pt-8 rounded-md focus:shadow-sm w-full p-3 h-16 placeholder-transparent bg-opacity-70 transition-all duration-100'

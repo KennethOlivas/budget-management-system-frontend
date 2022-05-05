@@ -1,20 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
 import DrawerItem from './DrawerItem'
 import NavBar from './NavBar'
 import { HomeIcon, MenuIcon } from '@heroicons/react/solid'
-
 import ThemeButton from './ThemeButton'
-import HeroDashboard from './HeroDashboard'
 
-interface DashboardProps {
-	Component: React.ComponentType<Component>
-	props ?: any
+interface Props {
+	children: React.ReactNode
 }
 
-const Dashboard = ({ Component, props }: DashboardProps) => (
+const Dashboard = ({ children }: Props) => (
 	<div className='drawer'>
 		<input id='my-drawer-3' type='checkbox' className='drawer-toggle' />
-		<div className='drawer-content'>
+		<div className='drawer-content flex flex-col'>
 			<div className='w-full navbar bg-base-300 space-x-4'>
 				<label htmlFor='my-drawer-3' className='btn btn-square btn-ghost'>
 					<MenuIcon className='w-7 h-7' />
@@ -25,12 +22,36 @@ const Dashboard = ({ Component, props }: DashboardProps) => (
 					styleIcon='btn btn-circle btn-ghost px-2 py-2'
 					StyleLabel=''
 				/>
-				{Component && <Component {...props} />}
+				<div className='dropdown dropdown-end'>
+					<label tabIndex={0} className='btn btn-ghost btn-circle avatar'>
+						<div className='w-10 rounded-full'>
+							<img src='https://api.lorem.space/image/face?hash=33791' />
+						</div>
+					</label>
+					<ul
+						tabIndex={0}
+						className='menu dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'
+					>
+						<li>
+							<a className='justify-between'>
+								Profile
+								<span className='badge'>New</span>
+							</a>
+						</li>
+						<li>
+							<a>Settings</a>
+						</li>
+						<li>
+							<a>Logout</a>
+						</li>
+					</ul>
+				</div>
 			</div>
-			<section className='m-8'>
-				<HeroDashboard />
-			</section>
+			{children}
 		</div>
+
+	
+
 		<div className='drawer-side'>
 			<label htmlFor='my-drawer-3' className='drawer-overlay'></label>
 			<ul className='menu p-4 overflow-y-auto w-80 bg-base-200'>
