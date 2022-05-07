@@ -1,5 +1,5 @@
 import { MoonIcon, SunIcon } from '@heroicons/react/solid'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 interface ThemeProps {
 	StyleLabel: string
@@ -8,18 +8,16 @@ interface ThemeProps {
 
 const ThemeButton = ({ styleIcon, StyleLabel }: ThemeProps) => {
 	const [darkMode, setDarkMode] = useState<boolean | undefined>(undefined)
-	useEffect(() => {
-		if (darkMode) {
+
+	const toggleDarkMode = () => {
+		setDarkMode(!darkMode)
+		if (!darkMode) {
 			document.documentElement.setAttribute('data-theme', 'winter')
 			localStorage.setItem('vidyaDarkMode', 'true')
 		} else {
 			document.documentElement.setAttribute('data-theme', 'night')
 			localStorage.setItem('vidyaDarkMode', 'false')
 		}
-	}, [darkMode])
-
-	const toggleDarkMode = () => {
-		setDarkMode(!darkMode)
 	}
 
 	return (

@@ -1,8 +1,5 @@
-
-
-const test =(props : any)=>{
-    console.log(props.foo);
-    
+const test = (props: any) => {
+	console.log(props.foo)
 }
 
-export default test;
+export default test

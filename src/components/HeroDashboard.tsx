@@ -1,4 +1,4 @@
-import SetUpAcount from "./SetUpAcount"
+import SetUpAcount from './SetUpAcount'
 
 const HeroDashboard = () => {
 	return (
@@ -9,7 +9,7 @@ const HeroDashboard = () => {
 					<p className='py-6'>
 						First time here? Setup Bank account to get started.
 					</p>
-					<SetUpAcount />
+					<SetUpAcount title='' />
 				</div>
 			</div>
 		</div>

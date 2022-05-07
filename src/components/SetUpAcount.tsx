@@ -1,7 +1,11 @@
 import { ChangeEvent, useState } from 'react'
 import Input from './Input'
 
-const SetUpAcount = () => {
+interface Props {
+	title: string | undefined
+}
+
+const SetUpAcount = ({ title }: Props) => {
 	const [bankNameAcount, setBankNameAcount] = useState('')
 	const [bankName, setBankName] = useState('')
 	const [bankNumber, setBankNumber] = useState('')
@@ -29,12 +33,12 @@ const SetUpAcount = () => {
 				htmlFor='my-modal-3'
 				className='btn btn-primary shadow-md shadow-primary/70 hover:shadow-primary/40 btn-xl capitalize text-xl'
 			>
-				Setup your bank Account
+				{title || 'Set Up bank Acount'}
 			</label>
 
 			<input type='checkbox' id='my-modal-3' className='modal-toggle' />
 			<div className='modal'>
-				<div className='modal-box bg-base-100 bg-opacity-80 relative'>
+				<div className='modal-box bg-base-100 relative'>
 					<label
 						htmlFor='my-modal-3'
 						className='btn btn-sm btn-circle absolute right-2 top-2 hover:text-error'
@@ -69,9 +73,6 @@ const SetUpAcount = () => {
 						<div className='flex space-x-4'>
 							<div className='mx-0 w-1/2'>
 								<select className='select select-primary select-lg w-full rounded-md focus:shadow-sm  bg-opacity-70 transition-all duration-100'>
-									<option selected disabled>
-										Select Currency
-									</option>
 									{currency.map(curr => (
 										<option key={curr.toString()}>{curr}</option>
 									))}

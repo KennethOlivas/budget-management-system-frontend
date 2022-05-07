@@ -1,13 +1,12 @@
-import { NavLink } from "react-router-dom"
+import { NavLink } from 'react-router-dom'
 
 const RegisterForm = () => {
 	return (
 		<div>
 			<div className='text-center'>
-				
 				<div className='space-y-2'>
 					<span className='text-sm text-accent-focus'>
-						Do you have acount ? 
+						Do you have acount ?
 					</span>
 					<NavLink
 						to='/Signup'

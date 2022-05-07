@@ -1,16 +1,12 @@
-import { useNavigate } from "react-router-dom"
-
+import { useNavigate } from 'react-router-dom'
 
 const ProfileButton = () => {
+	const navigate = useNavigate()
 
-    const navigate = useNavigate();
-
-
-    const Logout = () => {
-        localStorage.removeItem('token');
-        navigate('/login');
-    }
-
+	const Logout = () => {
+		localStorage.removeItem('token')
+		navigate('/login')
+	}
 
 	return (
 		<div className='dropdown dropdown-end'>
